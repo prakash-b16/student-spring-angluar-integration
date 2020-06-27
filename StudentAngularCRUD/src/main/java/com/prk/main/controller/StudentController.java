@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prk.main.model.StudentModel;
@@ -18,12 +19,12 @@ import com.prk.main.service.StudentService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping(path = "/stu")
 public class StudentController {
 
 	@Autowired
 	private StudentService service;
 	
+	// main page or base page 
 	@RequestMapping(value = "/")
 	public String mainPage() {
 		return "Project is Working!";
@@ -66,8 +67,8 @@ public class StudentController {
 	
 	// delete student record
 	@DeleteMapping(value = "/deletestu/{id}")
-	public String deleteStudent(@PathVariable("id") int id) {
-		String deleted = service.deleteStudentById(id);
-		return deleted;
+	public void deleteStudent(@PathVariable("id") int id) {
+		System.out.println("delete method called");
+		service.deleteStudentById(id);
 	}
 }

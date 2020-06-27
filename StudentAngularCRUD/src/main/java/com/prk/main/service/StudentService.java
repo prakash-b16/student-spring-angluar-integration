@@ -14,7 +14,7 @@ public interface StudentService {
 
 	StudentModel updateData(StudentModel stu);
 
-	String deleteStudentById(int id);
+	void deleteStudentById(int id);
 
 	String addStudentsByArray(List<StudentModel> stulist);
 

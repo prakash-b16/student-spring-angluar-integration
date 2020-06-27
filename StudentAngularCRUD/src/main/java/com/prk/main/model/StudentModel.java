@@ -13,7 +13,6 @@ public class StudentModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private int stuid;
 	@Column(name = "stu_name")
 	private String name;
