@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.prk.main.model.StudentModel;
 import com.prk.main.service.StudentService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@CrossOrigin("*")
 public class StudentController {
 
 	@Autowired
@@ -32,9 +32,8 @@ public class StudentController {
 	
 	// add new student record
 	@PostMapping(value = "/addnewstu")
-	public String addNewStudent(@RequestBody StudentModel stu) {
-		String saved = service.addStudent(stu);
-		return saved;
+	public void addNewStudent(@RequestBody StudentModel stu) {
+		service.addStudent(stu);
 	}
 	
 	// all students from array
@@ -46,16 +45,15 @@ public class StudentController {
 	
 	// get all student records
 	@GetMapping(value = "/getallstu")
-	public List<StudentModel> getAllStudents() {
-		List<StudentModel> studentList = service.getAllStudents();
+	public Iterable<StudentModel> getAllStudents() {
+		Iterable<StudentModel> studentList = service.getAllStudents();
 		return studentList;
 	}
 	
 	// get student by it's id number
 	@GetMapping(value = "/getstu/{id}")
 	public StudentModel getStudent(@PathVariable("id") int id) {
-		StudentModel stu = service.getStudentById(id);
-		return stu;
+		return service.getStudentById(id);
 	}	
 	
 	// edit student data

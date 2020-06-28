@@ -8,7 +8,7 @@ public interface StudentService {
 
 	String addStudent(StudentModel stu);
 
-	List<StudentModel> getAllStudents();
+	Iterable<StudentModel> getAllStudents();
 
 	StudentModel getStudentById(int id);
 

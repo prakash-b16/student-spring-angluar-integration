@@ -22,7 +22,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public List<StudentModel> getAllStudents() {
+	public Iterable<StudentModel> getAllStudents() {
 		return repo.findAll();
 	}
 
